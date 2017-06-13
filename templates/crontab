@@ -1,0 +1,10 @@
+###################################################################
+# WARNING! This file is managed by ansible. Do not edit directly! #
+###################################################################
+
+{% for job in item.value %}
+
+{% if job.name is defined %}# {{ job.name }}{% endif %}
+
+{{ job.min|default('*') }} {{ job.hour|default('*') }} {{ job.day|default('*') }} {{ job.month|default('*') }} {{ job.weekday|default('*') }} {{ job.cmd }}
+{% endfor %}

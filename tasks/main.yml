@@ -1,0 +1,9 @@
+- name: Install user crontabs
+  template:
+    src: crontab
+    dest: "{{ cronjobs_user_dir }}/{{ item.key }}"
+    mode: 0600
+    owner: "{{ item.key }}"
+    group: "{{ item.key }}"
+    validate: "{{ cronjobs_crontab_executable_path }} %s"
+  with_dict: "{{ cronjobs }}"
